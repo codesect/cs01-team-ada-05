@@ -2,16 +2,22 @@
   "name": "cs01-team-ada-05",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "firebase": "firebase",
+    "lint": "eslint src",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
   "dependencies": {
+    "@reach/router": "^1.2.1",
+    "firebase": "^7.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "firebase-tools": "^7.6.1"
   },
   "eslintConfig": {
     "extends": "react-app"
