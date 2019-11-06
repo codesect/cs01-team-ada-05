@@ -1,20 +1,14 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
-import TestComponent from './components/TestComponent';
+import { Wrapper } from './components/GlobalStyles';
 
 function App() {
   return (
-    <div
-      style={{
-        color: '#353535',
-        margin: '0 auto',
-        maxWidth: '600px',
-        padding: '1rem',
-      }}
-    >
-      <h1>Poll App</h1>
-      <TestComponent />
-    </div>
+    <Wrapper>
+      <h1>It works!</h1>
+      <Link to="/test">Test page</Link>
+    </Wrapper>
   );
 }
 

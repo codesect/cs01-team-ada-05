@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { db } from '../firebase';
+import { Wrapper } from './GlobalStyles';
 
 function TestComponent() {
   const [data, setData] = useState(null);
@@ -22,7 +23,7 @@ function TestComponent() {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <h2>Data Coming from Firebase Cloud Firestore</h2>
       {isLoading && (
         <div
@@ -47,13 +48,14 @@ function TestComponent() {
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
             fontSize: '14px',
+            overflowX: 'auto',
             padding: '1rem',
           }}
         >
           {JSON.stringify(data, null, 2)}
         </pre>
       )}
-    </>
+    </Wrapper>
   );
 }
 
