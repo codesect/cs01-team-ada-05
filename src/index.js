@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components/macro';
 
 import App from './App';
 import GlobalStyles from './components/GlobalStyles';
+import Header from './components/Header';
 import TestComponent from './components/TestComponent';
 
 import defaultTheme from './themes';
@@ -12,6 +13,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <ThemeProvider theme={defaultTheme}>
+    <Header />
     <Router>
       <App path="/" />
       <TestComponent path="/test" />

@@ -74,6 +74,7 @@ const defaultTheme = {
   linkActive: colors.blue[600],
   logo: colors.grey[700],
   mobileMenu: colors.grey[800],
+  mobileMenuText: colors.white,
   outline: colors.grey[500],
   placeholder: colors.grey[500],
   text: colors.grey[800],
