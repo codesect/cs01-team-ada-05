@@ -66,6 +66,8 @@ const defaultTheme = {
   buttonFacebook: '#3b5998',
   buttonTwitter: '#1da1f2',
   buttonText: colors.grey[800],
+  footer: colors.grey[800],
+  footerText: colors.grey[100],
   form: colors.white,
   header: colors.white,
   input: colors.grey[100],

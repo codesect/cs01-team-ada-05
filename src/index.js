@@ -4,6 +4,7 @@ import { Router } from '@reach/router';
 import { ThemeProvider } from 'styled-components/macro';
 
 import App from './App';
+import Footer from './components/Footer';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import TestComponent from './components/TestComponent';
@@ -18,6 +19,7 @@ ReactDOM.render(
       <App path="/" />
       <TestComponent path="/test" />
     </Router>
+    <Footer />
     <GlobalStyles />
   </ThemeProvider>,
   document.getElementById('root')
