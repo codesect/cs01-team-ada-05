@@ -2,20 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 
-import { Wrapper } from './components/GlobalStyles';
+import { FullSizeWrapper } from './components/GlobalStyles';
 
-const FullSizeWrapper = styled(Wrapper)`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 7.8125rem);
+const Header = styled.header`
+  text-align: center;
+`;
+
+const Title = styled.h1`
+  font-size: 12vmin;
+  font-weight: 100;
+  letter-spacing: 1vmin;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+`;
+
+const Subtitle = styled.h2`
+  border-top: 1px solid ${({ theme }) => theme.border};
+  font-size: 6vmin;
+  font-weight: 300;
+  margin: 0 0 2rem;
 `;
 
 function App() {
   return (
     <FullSizeWrapper>
-      <h1>It works!</h1>
+      <Header>
+        <Title>Hang on Tight!</Title>
+        <Subtitle>Something Awesome Is Coming</Subtitle>
+      </Header>
       <Link to="/test">Test page</Link>
     </FullSizeWrapper>
   );
