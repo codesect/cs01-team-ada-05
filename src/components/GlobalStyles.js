@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
+export const FullSizeWrapper = styled(Wrapper)`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 7.8125rem);
+`;
+
 export default createGlobalStyle`
   *,
   *::after,

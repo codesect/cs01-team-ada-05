@@ -7,6 +7,7 @@ import App from './App';
 import Footer from './components/Footer';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
+import NotFound from './components/NotFound';
 import TestComponent from './components/TestComponent';
 
 import defaultTheme from './themes';
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Router>
       <App path="/" />
       <TestComponent path="/test" />
+      <NotFound default />
     </Router>
     <Footer />
     <GlobalStyles />
