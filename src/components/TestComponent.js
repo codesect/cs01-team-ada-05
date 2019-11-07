@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { db } from '../firebase';
 import { Wrapper } from './GlobalStyles';
+
+const FullSizeWrapper = styled(Wrapper)`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 7.8125rem);
+`;
 
 function TestComponent() {
   const [data, setData] = useState(null);
@@ -23,7 +32,7 @@ function TestComponent() {
   }, []);
 
   return (
-    <Wrapper>
+    <FullSizeWrapper>
       <h2>Data Coming from Firebase Cloud Firestore</h2>
       {isLoading && (
         <div
@@ -41,13 +50,14 @@ function TestComponent() {
       {data && (
         <pre
           style={{
-            backgroundColor: '#2e343f',
+            backgroundColor: '#2d3545',
             borderRadius: '0.375rem',
             boxShadow: '0 .75rem 3rem 0 rgba(0, 0, 0, 0.5)',
             color: '#d1d8e3',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
             fontSize: '14px',
+            maxWidth: '100%',
             overflowX: 'auto',
             padding: '1rem',
           }}
@@ -55,7 +65,7 @@ function TestComponent() {
           {JSON.stringify(data, null, 2)}
         </pre>
       )}
-    </Wrapper>
+    </FullSizeWrapper>
   );
 }
 
