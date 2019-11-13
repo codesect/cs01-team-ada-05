@@ -12,7 +12,7 @@
 
 - [x] As a user, I can create a public poll anonymously.
 - [x] As a user, I can add a question and up to 12 poll options.
-- [ ] As a user, I can add different colours to each of my poll options.
+- [x] As a user, I can add different colours to each of my poll options.
 - [ ] As a user, I can accept comments on my polls.
 - [ ] As a user, once I created my poll, I can see different share options.
 - [ ] As an authenticated user, I can create a private poll, so it's not available on the public poll list and only users with a share link can vote on it.

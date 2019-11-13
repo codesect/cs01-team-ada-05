@@ -30,6 +30,7 @@ export const VisuallyHidden = styled.span`
 export default createGlobalStyle`
   :root {
     --reach-menu-button: 1;
+    --reach-tooltip: 1;
   }
 
   *,

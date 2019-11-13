@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css, keyframes } from 'styled-components';
+import Tooltip from '@reach/tooltip';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 
 import { COLORS } from '../constants';
@@ -88,12 +89,27 @@ const StyledMenuList = styled(MenuList)`
   ${createButtonColors()}
 `;
 
+const StyledTooltip = styled(Tooltip)`
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow.sm};
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  pointer-events: none;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 1;
+`;
+
 function ColorPicker({ onSelect, selectedColor }) {
   return (
     <Menu>
-      <StyledMenuButton color={selectedColor}>
-        <VisuallyHidden>Colour options</VisuallyHidden>
-      </StyledMenuButton>
+      <StyledTooltip label="Colour options">
+        <StyledMenuButton color={selectedColor}>
+          <VisuallyHidden>Colour options</VisuallyHidden>
+        </StyledMenuButton>
+      </StyledTooltip>
       <StyledMenuList>
         {COLORS.map(color => (
           <MenuItem key={color.name} onSelect={() => onSelect(color)}>
