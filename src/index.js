@@ -4,6 +4,7 @@ import { Router } from '@reach/router';
 import { ThemeProvider } from 'styled-components/macro';
 
 import App from './App';
+import CreatePoll from './components/CreatePoll';
 import Footer from './components/Footer';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Header />
     <Router>
       <App path="/" />
+      <CreatePoll path="/new" />
       <TestComponent path="/test" />
       <NotFound default />
     </Router>
