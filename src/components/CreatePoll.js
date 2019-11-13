@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import shortid from 'shortid';
 
+import ColorPicker from './ColorPicker';
 import { Button, Form, FormTitle, Input, Label } from './Form.styles';
 import { Wrapper } from './GlobalStyles';
 
+import { COLORS, MAX_POLL_OPTIONS } from '../constants';
 import { db } from '../firebase';
 
-const MAX_POLL_OPTIONS = 12;
-
 function CreatePoll() {
-  const [options, setOptions] = useState(['', '']);
+  const [options, setOptions] = useState([
+    { color: COLORS[0], text: '' },
+    { color: COLORS[1], text: '' },
+  ]);
   const [question, setQuestion] = useState('');
 
   const handleSubmit = e => {
@@ -17,6 +20,7 @@ function CreatePoll() {
 
     // TODO: check if question and options are valid!
     const id = shortid.generate();
+
     db.collection('polls')
       .add({
         id,
@@ -32,18 +36,37 @@ function CreatePoll() {
   };
 
   function addNewOption() {
-    setOptions([...options, '']);
+    setOptions([...options, { color: COLORS[options.length], text: '' }]);
   }
 
   function updateOption(e) {
-    const { name: index, value } = e.target;
+    const { name: index, value: text } = e.target;
 
     setOptions(
       options.map((option, idx) => {
         if (index !== idx.toString()) {
           return option;
         }
-        return value;
+
+        return {
+          ...option,
+          text,
+        };
+      })
+    );
+  }
+
+  function updateColor(index, color) {
+    setOptions(
+      options.map((option, idx) => {
+        if (index !== idx) {
+          return option;
+        }
+
+        return {
+          ...option,
+          color,
+        };
       })
     );
   }
@@ -64,14 +87,19 @@ function CreatePoll() {
           </Label>
           {options.map((option, i) => {
             return (
-              <Label key={i}>
+              <Label key={i} style={{ position: 'relative' }}>
                 {`Option ${i + 1}`}
                 <Input
                   type="text"
                   name={i}
                   onChange={updateOption}
                   placeholder={`Eg. ${i === 0 ? 'Vanilla' : 'Chocolate'}`}
-                  value={option}
+                  style={{ paddingRight: '3rem' }}
+                  value={option.text}
+                />
+                <ColorPicker
+                  onSelect={color => updateColor(i, color)}
+                  selectedColor={option.color.value}
                 />
               </Label>
             );

@@ -15,7 +15,23 @@ export const FullSizeWrapper = styled(Wrapper)`
   min-height: calc(100vh - 7.8125rem);
 `;
 
+export const VisuallyHidden = styled.span`
+  border: 0;
+  clip: rect(0 0 0 0);
+  display: block;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+`;
+
 export default createGlobalStyle`
+  :root {
+    --reach-menu-button: 1;
+  }
+
   *,
   *::after,
   *::before {
@@ -82,5 +98,10 @@ export default createGlobalStyle`
       border-color: currentColor;
       color: ${({ theme }) => theme.linkActive};
     }
+  }
+
+  [data-reach-menu] {
+    background-color: #fff;
+    position: absolute;
   }
 `;
