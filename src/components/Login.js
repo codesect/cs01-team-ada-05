@@ -20,7 +20,7 @@ function Login() {
     <FullSizeWrapper>
       <Form>
         <FormTitle>Login below</FormTitle>
-        <Button fullwidth onClick={handleSignIn}>
+        <Button fullwidth onClick={handleSignIn} type="button">
           Sign in using Google
         </Button>
         {authError && (

@@ -1,13 +1,22 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { Link } from '@reach/router';
 
 import HamburgerIcon from './Hamburger';
 import Logo from './Logo';
 import { Wrapper } from './GlobalStyles';
 
+import { firebase } from '../firebase';
+import useAuth from '../hooks/useAuth';
 import useEscapeOutside from '../hooks/useEscapeOutside';
 import useWindowWidth from '../hooks/useWindowWidth';
+
+const Avatar = styled.img.attrs({ alt: '' })`
+  border-radius: 50%;
+  height: 2.5rem;
+  margin: 0.5rem;
+  width: 2.5rem;
+`;
 
 const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.header};
@@ -20,6 +29,7 @@ const HeaderWrapper = styled(Wrapper)`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     justify-content: space-between;
+    padding: 0 1rem;
   }
 `;
 
@@ -85,7 +95,19 @@ const Menu = styled.ul`
   }
 `;
 
-const MenuItem = styled.li``;
+const MenuItem = styled.li`
+  align-items: center;
+  display: flex;
+
+  ${({ avatar }) =>
+    avatar &&
+    css`
+      order: -1;
+      @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+        order: 0;
+      }
+    `}
+`;
 
 const MenuLink = styled(Link)`
   color: ${({ theme }) => theme.mobileMenuText};
@@ -95,12 +117,28 @@ const MenuLink = styled(Link)`
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     color: inherit;
     display: inline;
-    padding: 1.75rem 0.5rem calc(1.75rem - 1px);
+    padding: 1.5rem 0.5rem calc(1.5rem - 1px);
+  }
+`;
+
+const MenuButton = styled(MenuLink).attrs({ as: 'button' })`
+  background-color: transparent;
+  border-radius: 0;
+  border-width: 0 0 1px;
+  transition: border ${({ theme }) => theme.transitionEase},
+    color ${({ theme }) => theme.transitionEase};
+
+  &:focus,
+  &:hover {
+    border-color: currentColor;
+    color: ${({ theme }) => theme.linkActive};
   }
 `;
 
 function Header() {
   const navRef = useRef();
+  const user = useAuth();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const windowWidth = useWindowWidth();
   const isSmallScreen = windowWidth <= 600;
@@ -110,6 +148,11 @@ function Header() {
   const toggleMenu = () => setMenuOpen(open => !open);
 
   useEscapeOutside(navRef, closeMenu);
+
+  function logout() {
+    closeMenu();
+    firebase.auth().signOut();
+  }
 
   return (
     <StyledHeader>
@@ -143,6 +186,28 @@ function Header() {
                 Create Poll
               </MenuLink>
             </MenuItem>
+            {!!user ? (
+              <>
+                <MenuItem>
+                  <MenuButton tabIndex={menuTabindex} onClick={logout}>
+                    Logout
+                  </MenuButton>
+                </MenuItem>
+                <MenuItem avatar>
+                  <Avatar src={user.photoURL} />
+                </MenuItem>
+              </>
+            ) : (
+              <MenuItem>
+                <MenuLink
+                  onClick={closeMenu}
+                  tabIndex={menuTabindex}
+                  to="/login"
+                >
+                  Login
+                </MenuLink>
+              </MenuItem>
+            )}
           </Menu>
         </nav>
       </HeaderWrapper>

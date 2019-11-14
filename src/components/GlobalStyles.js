@@ -12,7 +12,7 @@ export const FullSizeWrapper = styled(Wrapper)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 7.8125rem);
+  min-height: calc(100vh - 7.625rem);
 `;
 
 export default createGlobalStyle`
