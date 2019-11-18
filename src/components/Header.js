@@ -182,7 +182,7 @@ function Header() {
               </MenuLink>
             </MenuItem>
             <MenuItem>
-              <MenuLink onClick={closeMenu} tabIndex={menuTabindex} to="/">
+              <MenuLink onClick={closeMenu} tabIndex={menuTabindex} to="/new">
                 Create Poll
               </MenuLink>
             </MenuItem>

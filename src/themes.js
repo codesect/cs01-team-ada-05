@@ -55,6 +55,10 @@ const defaultTheme = {
   boxShadow: {
     sm:
       '0 0.25rem 0.5rem rgba(0, 0, 0, 0.12), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08)',
+    md:
+      '0 0.625rem 1rem rgba(0, 0, 0, 0.12), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.08)',
+    lg:
+      '0 1.25rem 1.5rem -0.25rem rgba(0, 0, 0, 0.12), 0 0.625rem 0.625rem -0.25rem rgba(0, 0, 0, 0.08)',
   },
   breakpoints: {
     sm: '600px',
