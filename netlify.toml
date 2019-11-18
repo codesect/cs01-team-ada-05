@@ -1,0 +1,7 @@
+# this rule will serve the index.html instead of giving a 404
+# no matter what URL the browser requests
+[[redirects]]
+  from = "/*"
+  to = "index.html"
+  status = 200
+
