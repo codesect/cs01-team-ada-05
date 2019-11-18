@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 
+import useAuth from './hooks/useAuth';
 import { FullSizeWrapper } from './components/GlobalStyles';
 
 const Header = styled.header`
@@ -24,10 +25,14 @@ const Subtitle = styled.h2`
 `;
 
 function App() {
+  const user = useAuth();
+
   return (
     <FullSizeWrapper>
       <Header>
-        <Title>Hang on Tight!</Title>
+        <Title>
+          {user ? `Hang on Tight, ${user.displayName}` : 'Hang on Tight!'}
+        </Title>
         <Subtitle>Something Awesome Is Coming</Subtitle>
       </Header>
       <Link to="/test">Test page</Link>

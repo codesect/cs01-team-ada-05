@@ -8,6 +8,7 @@ import CreatePoll from './components/CreatePoll';
 import Footer from './components/Footer';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
+import Login from './components/Login';
 import NotFound from './components/NotFound';
 import TestComponent from './components/TestComponent';
 
@@ -20,6 +21,7 @@ ReactDOM.render(
     <Router>
       <App path="/" />
       <CreatePoll path="/new" />
+      <Login path="/login" />
       <TestComponent path="/test" />
       <NotFound default />
     </Router>
